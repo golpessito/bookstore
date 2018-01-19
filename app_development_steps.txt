@@ -1,0 +1,5 @@
+1º Create About Controller
+
+2º rails g controller about index
+
+3º rails g controller books new create edit destroy index show
