@@ -8,6 +8,13 @@ class BooksController < ApplicationController
   end
 
   def create
+    @book=Book.new(book_params)
+    if @book.save
+      flash[:notice]="Book Created"
+      redirect_to books_path
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -17,6 +24,7 @@ class BooksController < ApplicationController
   end
 
   def index
+    @books=Book.all
   end
 
   def show
@@ -25,7 +33,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title,:category_id,:author_id,:publisher_id,:isb,:year,:price,:excerpt,:pages,:format,:buy)
+    params.require(:book).permit(:title,:category_id,:author_id,:publisher_id,:isb,:year,:price,:excerpt,:pages,:format,:buy, :coverpath)
   end
-  
+
 end
