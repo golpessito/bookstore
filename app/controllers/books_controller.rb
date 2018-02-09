@@ -28,12 +28,14 @@ class BooksController < ApplicationController
   end
 
   def show
+    @book=Book.find(params[:id])
+    @categories=Category.all
   end
 
   private
 
   def book_params
-    params.require(:book).permit(:title,:category_id,:author_id,:publisher_id,:isb,:year,:price,:excerpt,:pages,:format,:buy, :coverpath)
+    params.require(:book).permit(:title,:category_id,:author_id,:publisher_id,:isbn,:year,:price,:excerpt,:pages,:format,:buy, :coverpath)
   end
 
 end
